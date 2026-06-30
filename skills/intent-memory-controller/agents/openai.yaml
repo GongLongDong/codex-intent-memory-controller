@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intent Memory Controller"
+  short_description: "Guide intent state, memory, and execution"
+  default_prompt: "Use $intent-memory-controller to keep the current goal, memory, and execution boundary aligned."

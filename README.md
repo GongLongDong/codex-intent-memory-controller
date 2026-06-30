@@ -4,13 +4,20 @@ This repository contains a Codex skill for intent-state memory, goal-node tracki
 
 ## Install
 
-Use Codex skill installer:
+Install with Codex's skill installer from this GitHub repository:
 
 ```bash
-python C:\Users\kendoctor\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo gonglongdong/codex-intent-memory-controller --path skills/intent-memory-controller
+install-skill-from-github --repo GongLongDong/codex-intent-memory-controller --path skills/intent-memory-controller
 ```
 
-After installing, restart Codex to pick up the skill.
+If you use Codex's built-in `$skill-installer`, provide:
+
+```text
+repo: GongLongDong/codex-intent-memory-controller
+path: skills/intent-memory-controller
+```
+
+After installing, restart Codex to pick up the skill if your Codex surface does not reload skills automatically.
 
 ## Skill
 

@@ -143,3 +143,31 @@ support user feedback on small units
 ## Full Reference
 
 For the complete system design, read `references/system-design.md` when creating prompts, hooks, persistent rules, or revising this skill.
+
+## Runtime Hook Controller
+
+This skill includes a runnable hook controller:
+
+```text
+scripts/intent_memory_hook.py
+```
+
+It supports:
+
+```text
+UserPromptSubmit: assess current prompt and inject minimal state-specific context.
+PreToolUse: block obvious implementation tool use when no explicit implementation authorization is detected.
+PreCompact: remind Codex to preserve active/high-weight intent memory and avoid disabled-node noise.
+PostCompact: remind Codex to restore the current intent node after compaction.
+Stop: update local turn memory.
+```
+
+The script stores local runtime memory outside the skill folder:
+
+```text
+$CODEX_HOME/intent-memory-controller/intent-graph.json
+```
+
+Use `hooks/hooks.example.json` from the repository as the hook configuration template. Replace `<CODEX_HOME>` with the user's Codex home path, or install an equivalent hooks file in the active Codex config layer.
+
+Important: the hook layer is a conservative external controller. It does not modify the model. It injects context and protects implementation boundaries.

@@ -1,0 +1,62 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"<CODEX_HOME>/skills/intent-memory-controller/scripts/intent_memory_hook.py\"",
+            "statusMessage": "Assessing intent state"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|apply_patch|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"<CODEX_HOME>/skills/intent-memory-controller/scripts/intent_memory_hook.py\"",
+            "statusMessage": "Checking execution boundary"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"<CODEX_HOME>/skills/intent-memory-controller/scripts/intent_memory_hook.py\"",
+            "statusMessage": "Protecting intent memory"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"<CODEX_HOME>/skills/intent-memory-controller/scripts/intent_memory_hook.py\"",
+            "statusMessage": "Restoring intent memory"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"<CODEX_HOME>/skills/intent-memory-controller/scripts/intent_memory_hook.py\"",
+            "statusMessage": "Updating intent memory"
+          }
+        ]
+      }
+    ]
+  }
+}
